@@ -3,7 +3,7 @@ package qa.guru.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:authentication.properties"
+        "classpath:auth.properties"
 })
 public interface AuthConfig extends Config {
     @Key("username")
