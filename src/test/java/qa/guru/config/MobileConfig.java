@@ -1,15 +1,11 @@
 package qa.guru.config;
+
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
         "classpath:${env}.properties"
 })
-
 public interface MobileConfig extends Config {
-
-        @Key("app")
-        @DefaultValue("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c")
-        String getApp();
 
         @Key("device")
         @DefaultValue("Samsung Galaxy S22 Ultra")
@@ -17,6 +13,8 @@ public interface MobileConfig extends Config {
 
         @Key("os_version")
         @DefaultValue("12.0")
-        String getOsVersion();
+        String getVersion();
 
+        @Key("appUrl")
+        String getApp();
 }

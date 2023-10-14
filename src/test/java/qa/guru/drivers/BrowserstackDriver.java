@@ -1,8 +1,8 @@
 package qa.guru.drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import qa.guru.config.AuthConfig;
 import qa.guru.config.MobileConfig;
-import qa.guru.config.UserConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
@@ -13,11 +13,11 @@ import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class BrowserstackDriver implements WebDriverProvider {
-    public static MobileConfig config = ConfigFactory.create(MobileConfig.class,
-            System.getProperties());
-    public static UserConfig userConfig = ConfigFactory.create(UserConfig.class,
-            System.getProperties());
+
+    static MobileConfig config = ConfigFactory.create(MobileConfig.class, System.getProperties());
+    static AuthConfig authConfig = ConfigFactory.create(AuthConfig.class, System.getProperties());
 
     @Nonnull
     @Override
@@ -26,16 +26,15 @@ public class BrowserstackDriver implements WebDriverProvider {
         mutableCapabilities.merge(capabilities);
 
         // Set your access credentials
-        mutableCapabilities.setCapability("browserstack.user", userConfig.getUser());
-        mutableCapabilities.setCapability("browserstack.key", userConfig.getKey());
+        mutableCapabilities.setCapability("browserstack.user", authConfig.getUserLogin());
+        mutableCapabilities.setCapability("browserstack.key", authConfig.getUserPassword());
 
         // Set URL of the application under test
         mutableCapabilities.setCapability("app", config.getApp());
 
         // Specify device and os_version for testing
         mutableCapabilities.setCapability("device", config.getDevice());
-        mutableCapabilities.setCapability("os_version", config.getOsVersion());
-        mutableCapabilities.setCapability("browserstack.networkLogs","true");
+        mutableCapabilities.setCapability("os_version", config.getVersion());
 
         // Set other BrowserStack capabilities
         mutableCapabilities.setCapability("project", "First Java Project");
@@ -46,7 +45,7 @@ public class BrowserstackDriver implements WebDriverProvider {
         // and desired capabilities defined above
         try {
             return new RemoteWebDriver(
-                    new URL(userConfig.getRemoteUrl()), mutableCapabilities);
+                    new URL(authConfig.getRemoteUrl()), mutableCapabilities);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
