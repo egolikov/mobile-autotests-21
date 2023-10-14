@@ -8,7 +8,7 @@ import org.aeonbits.owner.Config;
 public interface MobileConfig extends Config {
 
         @Key("device")
-        @DefaultValue("Samsung Galaxy S22 Ultra")
+        @DefaultValue("Samsung Galaxy S21")
         String getDevice();
 
         @Key("os_version")
