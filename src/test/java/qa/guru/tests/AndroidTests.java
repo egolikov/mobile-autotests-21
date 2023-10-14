@@ -17,7 +17,7 @@ import static org.openqa.selenium.By.id;
 public class AndroidTests extends TestBase {
 
     @Test
-    @Tag("Android")
+    @Tag("android")
     @DisplayName("Проверка поиска в Wikipedia")
     void successfulWikiSearchTest() {
 
@@ -35,7 +35,7 @@ public class AndroidTests extends TestBase {
     }
 
     @Test
-    @Tag("Android")
+    @Tag("android")
     @DisplayName("Проверка наличия кнопки Log in")
     void checkLogInButtonTest() {
 

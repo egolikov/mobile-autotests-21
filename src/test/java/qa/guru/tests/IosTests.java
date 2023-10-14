@@ -12,7 +12,7 @@ import static org.openqa.selenium.By.id;
 public class IosTests extends TestBase {
 
     @Test
-    @Tag("IOS")
+    @Tag("ios")
     @DisplayName("Проверка ввода и отображения текста в UI Elements")
     void enterTextTest() {
 
