@@ -1,8 +1,8 @@
-package drivers;
+package qa.guru.drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.MobileConfig;
-import config.UserConfig;
+import qa.guru.config.MobileConfig;
+import qa.guru.config.UserConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;

@@ -1,4 +1,4 @@
-package config;
+package qa.guru.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
