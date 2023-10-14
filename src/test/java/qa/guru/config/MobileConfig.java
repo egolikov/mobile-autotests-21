@@ -8,11 +8,11 @@ import org.aeonbits.owner.Config;
 public interface MobileConfig extends Config {
 
         @Key("device")
-        @DefaultValue("Samsung Galaxy S21")
+        @DefaultValue("OnePlus 9")
         String getDevice();
 
         @Key("os_version")
-        @DefaultValue("12.0")
+        @DefaultValue("11.0")
         String getVersion();
 
         @Key("appUrl")
