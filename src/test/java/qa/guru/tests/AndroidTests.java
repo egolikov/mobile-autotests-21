@@ -14,7 +14,7 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.id;
 
 
-public class AndroidWikiTests extends TestBase {
+public class AndroidTests extends TestBase {
 
     @Test
     @Tag("Android")
