@@ -3,7 +3,6 @@ package qa.guru.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -27,16 +26,15 @@ public class AndroidTests extends TestBase {
         });
 
         step("Ввести в поле Поиска Hockey", () -> {
-            $(By.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Hockey");
+            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Hockey");
         });
 
         step("Проверка наличия контента в результате Поиска", () ->
-                $$(By.id("org.wikipedia.alpha:id/page_list_item_title"))
+                $$(id("org.wikipedia.alpha:id/page_list_item_title"))
                         .shouldHave(sizeGreaterThan(0)));
 
-        step("Открыть объект из результата поиска", () ->
-                $(id("org.wikipedia.alpha:id/view_card_header_title"))
-                        .click());
+        step("Открыть первый объект из результата поиска", () ->
+                $$(id("org.wikipedia.alpha:id/page_list_item_container")).first().click());
 
         step("Проверка наличия текста с ошибкой", () -> {
             $(id("org.wikipedia.alpha:id/view_wiki_error_text")).shouldBe(visible);
