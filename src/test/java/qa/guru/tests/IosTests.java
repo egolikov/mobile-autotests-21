@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.openqa.selenium.By.id;
 
 public class IosTests extends TestBase {
@@ -30,7 +31,8 @@ public class IosTests extends TestBase {
         });
 
         step("Проверка отображения результата с заданным текстом", () -> {
-            assertEquals("Hello QA.GURU", $(id("Text Output")).getText());
+            assertThat($(id("Text Output")).getText())
+                    .isEqualTo("Hello QA.GURU");
         });
     }
 }

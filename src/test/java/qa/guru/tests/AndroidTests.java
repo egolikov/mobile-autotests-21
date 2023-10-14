@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
@@ -32,6 +33,14 @@ public class AndroidTests extends TestBase {
         step("Проверка наличия контента в результате Поиска", () ->
                 $$(By.id("org.wikipedia.alpha:id/page_list_item_title"))
                         .shouldHave(sizeGreaterThan(0)));
+
+        step("Открыть объект из результата поиска", () ->
+                $(id("org.wikipedia.alpha:id/view_card_header_title"))
+                        .click());
+
+        step("Проверка наличия текста с ошибкой", () -> {
+            $(id("org.wikipedia.alpha:id/view_wiki_error_text")).shouldBe(visible);
+        });
     }
 
     @Test
