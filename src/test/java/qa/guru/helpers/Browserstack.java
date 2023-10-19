@@ -13,7 +13,6 @@ public class Browserstack {
     public static String videoUrl(String sessionId) {
 
         String url = format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
-
         return given()
                 .auth().basic(config.getUser(), config.getKey())
                 .when()
